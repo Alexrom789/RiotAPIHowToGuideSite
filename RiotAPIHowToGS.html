@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ <head lang="en">
+  <meta charset="UTF-8">
+  <title>How-To Riot API</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="RiotAPIHowTo.css">
+ </head>
+ <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="RiotAPIHowTo.html">Riot API How-To Guide</a>
+            <ul class="nav navbar-nav">
+      <li><a href="RiotAPIHowToGS.html">Getting Started</a></li>
+      <li><a href="RiotAPIHowToBE.html">Basic Example</a></li>
+      <li><a href="RiotAPIHowToAF.html">Adding Form</a></li>
+      <li><a href="RiotAPIHowToLU.html">Leveling Up</a></li>
+      <li><a href="RiotAPIHowToSS.html">Server Status</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrapperHeader">
+      <div class="header">
+        <img src="leagueOfLegendsBanner.jpg" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          Getting Started
+        </h1>
+        <p>
+          First thing is first, you will need to have a League of Legends account in order to register for an API key. This is to make sure no one exploits the system. If you are reading this guide, then you probably already have a LoL account, but if not you can sign up for one here at the 
+          <a href="http://na.leagueoflegends.com/">League of Legends</a> webpage. 
+        </p>
+        <h2>
+          I have an account, now what? </h2>
+           <p>Once you have an account navigate back to the <a href="https://developer.riotgames.com/">Riot Games Developer page</a> and sign in. The sign in page will look like the following: </p>
+           <img src="SignInScreen.png" width="700" height="600">
+        <p></p>
+    
+        <p>After logging in you will be taken to your development API key usage page which has your personal API key listed. It is important to note that this key should be kept private and not shared. If your key somehow falls in the wrong hands it can be exploited and you could possibly have you League of Legend account suspended. Below is a screenshot of where you can find your personal key. Mine has been blacked-out for security reasons. 
+        </p> 
+
+        <img src="APIKeyPage.png" width="700" height="600">
+        <p></p>
+        <p> With your API key aquired, you can now begin to use Riot Games' APIs. You can find a full list of all availible API references and their descriptions on the  <a href="https://developer.riotgames.com/api-methods/">API methods</a> webpage. For now though, let's head on over to the next page and we will  go over a simple example on how to use the summoner lookup API.</p>
+        <p>
+        **NOTE** In order to properly use the APIs by following the examples, you may need to install a special extension for your browser or you will get a "No 'Access-Control-Allow-Origin' header" error. I used the Chrome "Allow-Control-Allow-Orgin*" extension.  </p>
+      </div>
+       
+      <div class="container text-center"">
+        <p>
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowTo.html" role="button">« Previous </a> 
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToBE.html" role="button">Continue »</a>
+      </p>
+      </div>
+    </div>
+
+    <div class="footer"> <!--Added code below after website completeion !-->
+  <div class="container">
+    <hr></hr>
+  <ul>
+    <li> <a href="https://github.com/Alexrom789">Github <i class="fa fa-github"></i></a> </li>
+    <li> <a href="https://www.linkedin.com/in/alejandro-romero-681b3013b/">Linkedin <i class="fa fa-linkedin-square"></i></a> </li>
+  </ul>
+  <div class="pull-right">
+  <p>Made by Alejandro Romero &copy;2017 </p>
+  </div>
+  </div>
+  </div> 
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+ </body>
+</html>

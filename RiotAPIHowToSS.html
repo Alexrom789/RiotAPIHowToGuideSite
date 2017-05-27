@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ <head lang="en">
+  <meta charset="UTF-8">
+  <title>How-To Riot API</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="RiotAPIHowTo.css">
+ </head>
+ <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="RiotAPIHowTo.html">Riot API How-To Guide</a>
+            <ul class="nav navbar-nav">
+      <li><a href="RiotAPIHowToGS.html">Getting Started</a></li>
+      <li><a href="RiotAPIHowToBE.html">Basic Example</a></li>
+      <li><a href="RiotAPIHowToAF.html">Adding Form</a></li>
+      <li><a href="RiotAPIHowToLU.html">Leveling Up</a></li>
+      <li><a href="RiotAPIHowToSS.html">Server Status</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrapperHeader">
+      <div class="header">
+        <img src="leagueOfLegendsBanner.jpg" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          Server Status
+        </h1>
+        <p>
+         Now that we know how to make API calls via GET using JavaScript making calls to additional APIs should be easy. To add a little more to our page before wrapping up lets add a form which allows us to request the server status for a particular region. If a LoL server is offline it means that the game is currently not playable. and is most likely undergoing maintenance. The final page will look something like this:</p>
+         <img src="finalresults.png">
+         <p></p>
+         <p> As a way of seeing everything together I will post both the full HTML and JavaScript below. Can you notice the changes we made to call the server status API? 
+         **Note** JSFiddle does not work via get calls so unfortunately if you want to test the code to get the same results above you will have to run it localy on your own computer. 
+        </p>
+         <iframe width="100%" height="300" src="https://jsfiddle.net/Alexrom789/x346t730/1/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>" 
+
+<p> Congratulations! You now know enough about using Riot Games API to make use of them in a basic LoL web page or application.  </p>
+<img src="victory.jpg">
+        <p></p> 
+        <h1> So What's Next? </h1>
+           <p> The examples used in this guide are quite simple and not as aesthetically pleasing as one may wish. That does not mean the option is not there. In fact Riot Games gives developers access to certain graphics that can be used along with the APIs. For example at the bottom of the <a href="https://developer.riotgames.com/ranked-info.html">Ranked Info</a> page there is a downloadable zip of all the tier icons for you to use. The idea is that with enough experience you can use Riot Games API to create websites similar to <a href="https://na.op.gg/l=en_US">OP.GG </a> (Tip* Type in my summoner name), or more famously <a href="http://www.lolking.net/">LOLKING.NET</a>.</p>
+
+           <p> Hope you found this guide useful and enjoy your time coding! </p>
+           
+       
+      </div>
+       
+      <div class="container text-center"">
+        <p>
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToLU.html" role="button">« Previous </a> 
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowTo.html" role="button">Return to Home »</a>
+      </p>
+      </div>
+    </div>
+
+    <div class="footer"> <!--Added code below after website completeion !-->
+  <div class="container">
+    <hr></hr>
+  <ul>
+    <li> <a href="https://github.com/Alexrom789">Github <i class="fa fa-github"></i></a> </li>
+    <li> <a href="https://www.linkedin.com/in/alejandro-romero-681b3013b/">Linkedin <i class="fa fa-linkedin-square"></i></a> </li>
+  </ul>
+  <div class="pull-right">
+  <p>Made by Alejandro Romero &copy;2017 </p>
+  </div>
+  </div>
+  </div> 
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+ </body>
+</html>

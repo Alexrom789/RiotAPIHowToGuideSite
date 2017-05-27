@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+ <head lang="en">
+  <meta charset="UTF-8">
+  <title>How-To Riot API</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="RiotAPIHowTo.css">
+ </head>
+ <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="RiotAPIHowTo.html">Riot API How-To Guide</a>
+            <ul class="nav navbar-nav">
+      <li><a href="RiotAPIHowToGS.html">Getting Started</a></li>
+      <li><a href="RiotAPIHowToBE.html">Basic Example</a></li>
+      <li><a href="RiotAPIHowToAF.html">Adding Form</a></li>
+      <li><a href="RiotAPIHowToLU.html">Leveling Up</a></li>
+      <li><a href="RiotAPIHowToSS.html">Server Status</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrapperHeader">
+      <div class="header">
+        <img src="leagueOfLegendsBanner.jpg" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          Adding Form
+        </h1>
+        <p>
+         So we have this code which calls the API, gets information and then logs it all to the console window. But what if we want to allow the user to enter a summoner name instead of having to hardcode it in the link. For this we can create a simple form which would look something like this.
+         <img src="summonerform.png">
+         <p> First off we would need to create a place and style for the form in out HTML document. I just inserted the following code into my html body.
+        </p>
+      <iframe width="100%" height="300" src="https://jsfiddle.net/Alexrom789/9a8b4pL8/embedded/html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p> Luckily order to do get this form working via javascript we simply need to add a few extra lines to our code. Let's take a look.
+        <pre>document.addEventListener('DOMContentLoaded', bindButtons);
+
+function bindButtons() {
+  document.getElementById('formSubmit').addEventListener('click', function(event){
+
+var req = new XMLHttpRequest();
+var apiKey = 'YourAPIKeyHere';
+var URLhost = 'https://na1.api.riotgames.com//lol/summoner/v3/summoners/by-name/';
+var summonerName = document.getElementById("searchQ").value;
+var combinedURL = URLhost + summonerName + '?api_key=' + apiKey;
+
+
+req.open("GET", combinedURL, true);
+
+req.addEventListener('load',function(){
+  if(req.status >= 200 && req.status < 400){
+    var response = JSON.parse(req.responseText);
+    console.log(response);
+    formResponse(response); 
+  } else {
+    console.log('Error in network request: ' + req.statusText);
+  }
+});
+req.send();
+event.preventDefault();
+});
+};</pre>
+<p> The first few lines of code allow us to create an event which triggers once the user has entered a name in the search field and clicked the submit button. Nothing too new here especially if your already familar with HTML/Javascript. 
+
+        <p></p> 
+        <img src="Teemo.jpg" width="800" height="400">
+        <p></p>
+        <h2>
+          Choosing what we want. </h2>
+           <p> Lets say we are not interested in all the information we get back from the API call. For example let's say in this case I am just interested in my Summoner Name, ID and level. First we would need to create a place in our HTML to display the info we want. I used the following code.</p>
+             <iframe width="100%" height="300" src="https://jsfiddle.net/Alexrom789/ejhLbpnL/embedded/html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+           <p>In this case we can specify information we want to be displayed back to our HTML page in JavaScript using the following code format. Note how we are using JavaScript dot notation to access the JSON elements we want to display. </p>
+           <pre>req.addEventListener('load',function(){
+  if(req.status >= 200 && req.status < 400){
+    var response = JSON.parse(req.responseText);
+    console.log(response);
+    formResponse(response); 
+  } else {
+    console.log('Error in network request: ' + req.statusText);
+  }
+});
+req.send();
+event.preventDefault();
+});
+};
+
+function formResponse(response) {
+  document.getElementById('out-name').textContent = response.name;
+  document.getElementById('out-id').textContent = response.id;
+  document.getElementById('out-level').textContent = response.summonerLevel;
+</pre>
+        <p></p>
+    
+        <p>The two new things here are the call to the function formResponse right under the call to console.log and the block of code towards the bottom which allows us to append specific information from the API to our HTML.  The end result would be something like this.
+        </p> 
+        <img src="callresults1.png">
+
+        
+        <p> Pretty cool huh. On the next page we will how you how to get even more information (The stuff we are really interested in.) by calling a different API for League results.</p>
+       
+      </div>
+       
+      <div class="container text-center"">
+        <p>
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToBE.html" role="button">« Previous </a> 
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToLU.html" role="button">Continue »</a>
+      </p>
+      </div>
+    </div>
+
+    <div class="footer"> <!--Added code below after website completeion !-->
+  <div class="container">
+    <hr></hr>
+  <ul>
+    <li> <a href="https://github.com/Alexrom789">Github <i class="fa fa-github"></i></a> </li>
+    <li> <a href="https://www.linkedin.com/in/alejandro-romero-681b3013b/">Linkedin <i class="fa fa-linkedin-square"></i></a> </li>
+  </ul>
+  <div class="pull-right">
+  <p>Made by Alejandro Romero &copy;2017 </p>
+  </div>
+  </div>
+  </div> 
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+ </body>
+</html>

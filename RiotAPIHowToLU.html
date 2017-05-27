@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+ <head lang="en">
+  <meta charset="UTF-8">
+  <title>How-To Riot API</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="RiotAPIHowTo.css">
+ </head>
+ <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="RiotAPIHowTo.html">Riot API How-To Guide</a>
+            <ul class="nav navbar-nav">
+      <li><a href="RiotAPIHowToGS.html">Getting Started</a></li>
+      <li><a href="RiotAPIHowToBE.html">Basic Example</a></li>
+      <li><a href="RiotAPIHowToAF.html">Adding Form</a></li>
+      <li><a href="RiotAPIHowToLU.html">Leveling Up</a></li>
+      <li><a href="RiotAPIHowToSS.html">Server Status</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrapperHeader">
+      <div class="header">
+        <img src="leagueOfLegendsBanner.jpg" class="img-fluid" alt="Responsive image">
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>
+          Leveling up
+        </h1>
+        <p>
+         Now I know what your probably thinking. As a League of Legends player I am interested in knowing another player's tier, ranking, wins etc.  Well fret no more, this next section is all about adding that juicy information by making yet another GET request to a different API.
+         The end result will be something like the following.</p>
+         <img src="callresults2.png">
+         <p> To begin, you should add additional sections to your html in order to display the new information.
+         As you should already have an idea of how to do this I will jump straight into the JavaScript code.
+        </p>
+        <pre>document.addEventListener('DOMContentLoaded', bindButtons);
+
+function bindButtons() {
+  document.getElementById('formSubmit').addEventListener('click', function(event){
+
+var req = new XMLHttpRequest();
+var apiKey = 'YourAPIKeyHere';
+var URLhost = 'https://na1.api.riotgames.com//lol/summoner/v3/summoners/by-name/';
+var summonerName = document.getElementById("searchQ").value;
+var combinedURL = URLhost + summonerName + '?api_key=' + apiKey;
+
+
+req.open("GET", combinedURL, true);
+
+req.addEventListener('load',function(){
+  if(req.status >= 200 && req.status < 400){
+    var response = JSON.parse(req.responseText);
+    console.log(response);
+    formResponse(response); //added
+  } else {
+    console.log('Error in network request: ' + req.statusText);
+  }
+});
+req.send();
+event.preventDefault();
+});
+
+  document.getElementById('formSubmit').addEventListener('click', function(event){
+
+var req = new XMLHttpRequest();
+var apiKey = 'YourAPIKeyHere';
+var URLhost = 'https://na1.api.riotgames.com//lol/league/v3/positions/by-summoner/';
+var summonerID = '76812932';
+var combinedURL = URLhost + summonerID + '?api_key=' + apiKey;
+
+
+req.open("GET", combinedURL, true);
+
+req.addEventListener('load',function(){
+  if(req.status >= 200 && req.status < 400){
+    var response = JSON.parse(req.responseText);
+    console.log(response);
+    formResponse(response); 
+  } else {
+    console.log('Error in network request: ' + req.statusText);
+  }
+});
+req.send();
+event.preventDefault();
+});
+};
+
+function formResponse(response) {
+  document.getElementById('out-name').textContent = response.name;
+  document.getElementById('out-id').textContent = response.id;
+  document.getElementById('out-level').textContent = response.summonerLevel;
+  document.getElementById('out-queue').textContent = response[0].queueType;
+  document.getElementById('out-tier').textContent = response[0].tier;
+  document.getElementById('out-rank').textContent = response[0].rank;
+  document.getElementById('out-wins').textContent = response[0].wins;
+  document.getElementById('out-losses').textContent = response[0].losses;
+}
+</pre>
+<p> Now I know this looks scary, but all we really did was make another GET call in a similar fashion as we did before, and added a few lines of code to the formResponse function in order to display the new information. Now the new information this time is stored in an array, without orginizing and choosing what we want the initial console output in JSON would look like this:
+<img src="call2results.png">
+<p> Now I am only interested in Solo/Duo queue results at the moment. Since this queue info is stored in array index 0 (Flex queue info is array index 1) we add the [0] to the response calls as shown above.
+
+        <p></p> 
+        
+           <p> Not too bad right. Riot games provides us with many different APIs we could use. There are APIs to display current game information, runes and masteries used by each player, champion availibility, professional tournament info etc. As a final tutorial we will show you how to make one more GET request to an API for server status.</p>
+       
+      </div>
+       
+      <div class="container text-center"">
+        <p>
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToAF.html" role="button">« Previous </a> 
+        <a class="btn btn-danger btn-sml" href="RiotAPIHowToSS.html" role="button">Continue »</a>
+      </p>
+      </div>
+    </div>
+
+    <div class="footer"> <!--Added code below after website completeion !-->
+  <div class="container">
+    <hr></hr>
+  <ul>
+    <li> <a href="https://github.com/Alexrom789">Github <i class="fa fa-github"></i></a> </li>
+    <li> <a href="https://www.linkedin.com/in/alejandro-romero-681b3013b/">Linkedin <i class="fa fa-linkedin-square"></i></a> </li>
+  </ul>
+  <div class="pull-right">
+  <p>Made by Alejandro Romero &copy;2017 </p>
+  </div>
+  </div>
+  </div> 
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+ </body>
+</html>
